@@ -1,47 +1,36 @@
-.form-container {
-  text-align: center;
-  margin-top: 50px;
-}
-
-.titulo {
-  font-size: 28px;
-  color: black;
+.container {
+  background-color: #ffffff;
+  color: #000000;
 }
 
 .formulario {
-  display: inline-block;
-  background-color: black;
+  background-color: #ffffff;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 4px;
 }
 
-.campo {
-  margin-bottom: 10px;
-}
-
-label {
-  display: block;
-  font-weight: bold;
-  color: black;
+.formulario label {
+  color: #000000;
 }
 
 .input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #000000;
+  color: #000000;
 }
 
 .boton {
-  background-color: #4caf50;
-  color: white;
-  padding: 10px 20px;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #ffffff;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
 }
 
 .mensaje {
-  margin-top: 20px;
-  color: white;
+  margin-top: 10px;
+  text-align: center;
+  color: green;
 }

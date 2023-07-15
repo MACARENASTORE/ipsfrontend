@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./EspecialidadLista.css";
 
 interface Especialidad {
-  id: number;
+  idEspecialidad: number;
   nombre: string;
   code: string;
 }
@@ -15,7 +15,13 @@ const EspecialidadLista: React.FC = () => {
       try {
         const response = await fetch("http://localhost:8080/especialidades");
         const data = await response.json();
-        setEspecialidades(data);
+        setEspecialidades(
+          data.map((item: Especialidad) => ({
+            idEspecialidad: item.idEspecialidad,
+            nombre: item.nombre,
+            code: item.code,
+          }))
+        );
       } catch (error) {
         console.error(error);
       }
@@ -37,8 +43,8 @@ const EspecialidadLista: React.FC = () => {
         </thead>
         <tbody>
           {especialidades.map((especialidad) => (
-            <tr key={especialidad.id}>
-              <td>{especialidad.id}</td>
+            <tr key={especialidad.idEspecialidad}>
+              <td>{especialidad.idEspecialidad}</td>
               <td>{especialidad.nombre}</td>
               <td>{especialidad.code}</td>
             </tr>

@@ -28,7 +28,7 @@ const EspecialidadFormulario: React.FC<EspecialidadFormularioProps> = ({ onSubmi
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:8080/pacientes", {
+      const response = await fetch("http://localhost:8080/especialidades", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
