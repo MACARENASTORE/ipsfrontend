@@ -1,21 +1,51 @@
-/* AdvisorForm.css */
+/* MedicoFormulario.css */
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e0;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e0;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  background-color: #edf2f7;
+  color: #4a5568;
+}
+
+.button {
+  background-color: #48bb78;
+  color: #fff;
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 .success-message {
-    background: green;
-    color: white;
-    padding: 10px;
-    margin-top: 10px;
-    animation: fadeout 3s forwards;
-  }
-  
-  @keyframes fadeout {
-    0% {
-      opacity: 1;
-    }
-    70% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-  
+  background-color: #48bb78;
+  color: #fff;
+  padding: 12px;
+  border-radius: 4px;
+  margin-top: 16px;
+  text-align: center;
+}

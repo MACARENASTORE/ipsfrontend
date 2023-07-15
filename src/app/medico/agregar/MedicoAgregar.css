@@ -1,0 +1,15 @@
+.container {
+  background-color: black;
+  color: white;
+}
+
+.page-title {
+  color: white;
+  font-size: 2rem;
+}
+
+.form-container {
+  margin: 0 auto;
+  max-width: 400px;
+  color: black;
+}

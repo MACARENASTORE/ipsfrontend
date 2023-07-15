@@ -1,0 +1,51 @@
+.page-container {
+  background-color: black;
+  color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 20px; /* Agrega un espacio superior de 20px */
+}
+
+.menu-toggle {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.nav-container {
+  margin-top: 20px; /* Agrega un espacio superior de 20px */
+}
+
+.nav-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column; /* Cambia la dirección del menú a vertical */
+  align-items: center; /* Centra las opciones verticalmente */
+}
+
+.nav-item {
+  margin-bottom: 10px;
+}
+
+.nav-item a {
+  color: white;
+  text-decoration: none;
+}
+
+.menu-open .nav-container {
+  display: block;
+}
+
+.menu-open .menu-toggle {
+  display: none;
+}

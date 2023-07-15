@@ -1,0 +1,47 @@
+.form-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.titulo {
+  font-size: 28px;
+  color: black;
+}
+
+.formulario {
+  display: inline-block;
+  background-color: black;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.campo {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  color: black;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.boton {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.mensaje {
+  margin-top: 20px;
+  color: white;
+}

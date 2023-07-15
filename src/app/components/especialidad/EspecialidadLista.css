@@ -1,0 +1,33 @@
+.especialidad-lista-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.titulo {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: black; /* Añadido para hacer las letras negras */
+}
+
+.tabla-especialidades {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-especialidades th,
+.tabla-especialidades td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #dddddd;
+  color: black; /* Añadido para hacer las letras negras */
+}
+
+.tabla-especialidades th {
+  font-weight: bold;
+}
+
+.tabla-especialidades td {
+  font-size: 16px;
+}

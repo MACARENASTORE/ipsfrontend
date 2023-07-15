@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import "./CitaLista.css"; // Import CSS for styling
 
 interface Cita {
   fecha: string | null;
@@ -34,8 +35,6 @@ const CitaTable = () => {
 
           const medicoData = await medicoResponse.json();
 
-          console.log(medicoData);
-
           const pacienteResponse = await fetch(cita._links.paciente.href);
           const pacienteData = await pacienteResponse.json();
 
@@ -56,10 +55,10 @@ const CitaTable = () => {
   }, []);
 
   return (
-    <table>
+    <table className="table">
       <thead>
         <tr>
-          <th>Nombre Medico</th>
+          <th>Nombre Médico</th>
           <th>Nombre Paciente</th>
           <th>Fecha</th>
         </tr>

@@ -1,0 +1,20 @@
+/* MedicoListaPage.css */
+
+.container {
+    background-color: black;
+    color: white;
+    height: 100vh;
+  }
+  
+  .page-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 40px;
+    color: #4299e1;
+  }
+  
+  .medico-lista-container {
+    padding: 20px;
+  }
+  
