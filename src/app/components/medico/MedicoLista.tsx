@@ -9,21 +9,24 @@ interface Medico {
   especialidad: string;
 }
 
-const MedicoLista = () => {
+const MedicoLista: React.FC = () => {
   const [medicos, setMedicos] = useState<Medico[]>([]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchMedicos = async () => {
       try {
         const response = await fetch("http://localhost:8080/medicos");
+        if (!response.ok) {
+          throw new Error('No se pudo obtener la lista de medicos');
+        }
         const data = await response.json();
-        setMedicos(data);
+        setMedicos(data._embedded.medicos);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error(error);
       }
     };
 
-    fetchData();
+    fetchMedicos();
   }, []);
 
   return (

@@ -14,14 +14,11 @@ const EspecialidadLista: React.FC = () => {
     const fetchEspecialidades = async () => {
       try {
         const response = await fetch("http://localhost:8080/especialidades");
+        if (!response.ok) {
+          throw new Error('No se pudo obtener la lista de especialidades');
+        }
         const data = await response.json();
-        setEspecialidades(
-          data.map((item: Especialidad) => ({
-            idEspecialidad: item.idEspecialidad,
-            nombre: item.nombre,
-            code: item.code,
-          }))
-        );
+        setEspecialidades(data._embedded.especialidades);
       } catch (error) {
         console.error(error);
       }
@@ -32,7 +29,7 @@ const EspecialidadLista: React.FC = () => {
 
   return (
     <div className="especialidad-lista-container">
-      <h2 className="titulo"></h2>
+      <h2 className="titulo">Lista de Especialidades</h2>
       <table className="tabla-especialidades">
         <thead>
           <tr>

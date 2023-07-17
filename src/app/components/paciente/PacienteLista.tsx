@@ -2,22 +2,25 @@ import React, { useEffect, useState } from "react";
 import "./PacienteLista.css"; // Import CSS for styling
 
 interface Paciente {
-  cedula: string;
+  cedula: number;
   nombre: string;
   apellido: string;
   fechaDeNacimiento: string;
   telefono: string;
 }
 
-const PacienteLista = () => {
+const PacienteLista: React.FC = () => {
   const [pacientes, setPacientes] = useState<Paciente[]>([]);
 
   useEffect(() => {
     const fetchPacientes = async () => {
       try {
-        const response = await fetch("http://localhost:8080/pacientes");
+        const response = await fetch('http://localhost:8080/pacientes');
+        if (!response.ok) {
+          throw new Error('No se pudo obtener la lista de pacientes');
+        }
         const data = await response.json();
-        setPacientes(data);
+        setPacientes(data._embedded.pacientes);
       } catch (error) {
         console.error(error);
       }

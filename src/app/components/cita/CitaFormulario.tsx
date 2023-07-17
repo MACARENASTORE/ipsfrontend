@@ -57,13 +57,13 @@ const CitaForm = () => {
     fetchMedicos();
   }, []);
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const cita: Cita = {
-      paciente: e.target.paciente.value,
-      medico: e.target.medico.value,
-      fecha: e.target.fecha.value,
+      paciente: (e.currentTarget.elements.namedItem("pacientes") as HTMLSelectElement).value,
+      medico: (e.currentTarget.elements.namedItem("medico") as HTMLSelectElement).value,
+      fecha: (e.currentTarget.elements.namedItem("date") as HTMLInputElement).value,
     };
 
     try {
@@ -80,10 +80,11 @@ const CitaForm = () => {
 
       if (response.ok) {
         // Clear the form
-        e.target.reset();
+        (e.currentTarget as HTMLFormElement).reset();
 
         // Disable the submit button
-        e.target.disabled = true;
+        const submitButton = e.currentTarget.elements.namedItem("submit") as HTMLButtonElement;
+        submitButton.disabled = true;
 
         setSubmitted(true); // Set the submitted state to true
         setTimeout(() => {
@@ -98,8 +99,8 @@ const CitaForm = () => {
   };
 
   // Extract the paciente id from the href
-  const getPacienteId = (pacientes: string) => {
-    const pacienteHrefParts = pacientes.split("/");
+  const getPacienteId = (paciente: string) => {
+    const pacienteHrefParts = paciente.split("/");
     const pacienteId = pacienteHrefParts[pacienteHrefParts.length - 1];
     return pacienteId;
   };
@@ -116,8 +117,8 @@ const CitaForm = () => {
             <option value="0">Seleccione un Paciente</option>
             {pacientes.map((paciente) => (
               <option
-                key={getPacienteId(paciente._links.pacientes.href)}
-                value={paciente._links.pacientes.href}
+                key={getPacienteId(paciente._links.paciente.href)}
+                value={paciente._links.paciente.href}
               >
                 {paciente.nombre}
               </option>
@@ -145,6 +146,7 @@ const CitaForm = () => {
         </div>
         <button
           type="submit"
+          name="submit"
           className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
         >
           Guardar

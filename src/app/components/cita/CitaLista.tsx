@@ -27,7 +27,7 @@ const CitaTable = () => {
         const data = await response.json();
 
         const citaData = [];
-        for (const cita of data._embedded.counselings) {
+        for (const cita of data._embedded.citas) {
           const medicoResponse = await fetch(cita._links.medico.href);
           if (!medicoResponse.ok) {
             continue;

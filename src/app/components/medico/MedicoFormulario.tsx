@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./MedicoFormulario.css"; // Import CSS for animation
 
-
 interface Especialidad {
   nombre: string;
   code: number;
@@ -41,16 +40,16 @@ const MedicoForm = () => {
     fetchEspecialidades();
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setMedico((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
+
+    setMedico({
+      nombre: e.target.nombre.value,
+      apellido: e.target.apellido.value,
+      consultorio: e.target.consultorio.value,
+      correo: e.target.correo.value,
+      especialidad: e.target.especialidad.value,
+    });
 
     try {
       const response = await fetch("http://localhost:8080/medicos", {
@@ -61,19 +60,12 @@ const MedicoForm = () => {
         body: JSON.stringify(medico),
       });
 
-      if (!response.ok) {
-        throw new Error("No se pudo guardar el registro");
-      }
+      const data = await response.json();
+      console.log(data);
 
-      setSubmitted(true);
-      setTimeout(() => setSubmitted(false), 3000);
-      setMedico({
-        nombre: "",
-        apellido: "",
-        consultorio: "",
-        correo: "",
-        especialidad: "",
-      });
+      e.target.reset(); // Clear the form
+      setSubmitted(true); // Set the submitted state to true
+      setTimeout(() => setSubmitted(false), 3000); // Reset the submitted state after 3 seconds
     } catch (error) {
       console.error(error);
     }
@@ -91,8 +83,6 @@ const MedicoForm = () => {
             type="text"
             id="nombre"
             name="nombre"
-            value={medico.nombre}
-            onChange={handleChange}
             className="form-input"
             placeholder="Ingrese Nombre"
           />
@@ -105,8 +95,6 @@ const MedicoForm = () => {
             type="text"
             id="apellido"
             name="apellido"
-            value={medico.apellido}
-            onChange={handleChange}
             className="form-input"
             placeholder="Ingrese Apellido"
           />
@@ -119,8 +107,6 @@ const MedicoForm = () => {
             type="text"
             id="consultorio"
             name="consultorio"
-            value={medico.consultorio}
-            onChange={handleChange}
             className="form-input"
             placeholder="Ingrese Consultorio"
           />
@@ -133,8 +119,6 @@ const MedicoForm = () => {
             type="email"
             id="correo"
             name="correo"
-            value={medico.correo}
-            onChange={handleChange}
             className="form-input"
             placeholder="Ingrese Correo"
           />
@@ -143,16 +127,10 @@ const MedicoForm = () => {
           <label htmlFor="especialidad" className="block text-gray-700">
             Especialidad:
           </label>
-          <select
-            name="especialidad"
-            id="especialidad"
-            value={medico.especialidad}
-            onChange={handleChange}
-            className="form-select"
-          >
+          <select name="especialidad" id="especialidad" className="form-select">
             <option value="">Seleccione una especialidad</option>
             {especialidades.map((especialidad) => (
-              <option key={especialidad.code} value={especialidad._links.Especialidad.href}>
+              <option key={especialidad.code} value={especialidad._links.especialidad.href}>
                 {especialidad.nombre}
               </option>
             ))}
